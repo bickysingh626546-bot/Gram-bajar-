@@ -1,61 +1,87 @@
  
 <!DOCTYPE html>
 <html lang="hi">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Gram Bajar - Deshi Products</title>
+  <title>Gram Bajar | गाँव का बाजार</title>
 
+  <meta name="description" content="Gram Bajar - गाँव के हस्तनिर्मित सामान का ऑनलाइन बाजार">
+
+  <!-- CSS Connection -->
   <link rel="stylesheet" href="style.css">
 
+  <!-- JavaScript Connection -->
   <script src="script.js" defer></script>
 </head>
 
 <body>
 
-  <header>
-    <h1>🌿 Gram Bajar</h1>
-    <p>गाँव के हस्तनिर्मित सामान का बाजार</p>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="brand">
+      <span class="brand-mark">🌿</span>
+
+      <div>
+        <h1>Gram Bajar</h1>
+        <p>गाँव के हस्तनिर्मित सामान का बाजार</p>
+      </div>
+    </div>
   </header>
 
-  <main>
+  <!-- Main Section -->
+  <main class="container">
 
-    <h2>हमारे देसी उत्पाद</h2>
+    <section class="intro">
+      <h2>अपने गाँव के हुनर को पहचानें</h2>
+      <p>मिट्टी, बाँस और हाथ से बने उपयोगी सामान खरीदें।</p>
+    </section>
 
-    <div class="filters">
+    <!-- Search and Filter -->
+    <section class="shop">
 
-      <input
-        id="search"
-        type="search"
-        placeholder="🔍 कोई भी सामान खोजें..."
-      >
+      <div class="filters">
 
-      <button
-        type="button"
-        id="clearButton"
-        class="cart-btn">
-        ✖ Clear
-      </button>
+        <input
+          id="search"
+          type="search"
+          placeholder="🔍 कोई भी सामान खोजें..."
+          autocomplete="off"
+        >
 
-      <select id="category">
-        <option value="all">सभी कैटेगरी</option>
-      </select>
+        <button
+          id="clearButton"
+          type="button"
+          class="clear-btn">
+          ✖ Clear
+        </button>
 
-    </div>
+        <select id="category">
+          <option value="all">सभी कैटेगरी</option>
+        </select>
 
-    <p id="resultCount"></p>
+      </div>
 
-    <div id="products" class="products-grid"></div>
+      <!-- Result Count -->
+      <p id="resultCount" class="result-count"></p>
 
-    <p id="emptyMessage" hidden>
-      कोई सामान नहीं मिला।
-    </p>
+      <!-- Products -->
+      <div id="products" class="products-grid"></div>
+
+      <!-- No Product Message -->
+      <p id="emptyMessage" hidden>
+        माफ कीजिए! कोई सामान नहीं मिला।
+      </p>
+
+    </section>
 
   </main>
 
-  <footer>
-    <p>© 2026 Gram Bajar</p>
+  <!-- Footer -->
+  <footer class="site-footer">
+    <p>© 2026 Gram Bajar | स्थानीय हुनर, स्थानीय बाजार</p>
   </footer>
 
 </body>
