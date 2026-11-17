@@ -1,6 +1,6 @@
  
 /* =================================
-   GRAM BAJAR - COMPLETE CSS
+   🌿 GRAM BAJAR - COMPLETE CSS
 ================================= */
 
 * {
@@ -25,6 +25,10 @@ body {
   line-height: 1.6;
 }
 
+[hidden] {
+  display: none !important;
+}
+
 /* HEADER */
 
 .site-header {
@@ -47,15 +51,13 @@ body {
 
 .brand h1 {
   font-size: 28px;
-  margin: 0;
 }
 
 .brand p {
   font-size: 14px;
-  margin: 0;
 }
 
-/* MAIN CONTAINER */
+/* MAIN */
 
 .container {
   width: 92%;
@@ -77,10 +79,9 @@ body {
 
 .intro p {
   color: var(--muted);
-  font-size: 16px;
 }
 
-/* FILTER SECTION */
+/* FILTERS */
 
 .shop {
   padding: 15px 0 40px;
@@ -90,7 +91,6 @@ body {
   display: grid;
   grid-template-columns: 1fr 220px auto;
   gap: 12px;
-  align-items: center;
 }
 
 .filters input,
@@ -107,45 +107,30 @@ body {
 .filters input,
 .filters select {
   background: white;
-  color: var(--text);
 }
-
-.filters input:focus,
-.filters select:focus {
-  outline: 2px solid #9ac7a9;
-}
-
-/* CLEAR BUTTON */
 
 .clear-btn {
   background: var(--primary);
   color: white;
-  border: none;
   cursor: pointer;
-  font-weight: bold;
 }
 
 .clear-btn:hover {
   background: var(--primary-dark);
 }
 
-/* RESULT COUNT */
-
 .result-count {
   color: var(--muted);
   margin: 18px 0 14px;
-  font-size: 15px;
 }
 
-/* PRODUCTS GRID */
+/* PRODUCTS */
 
 .products-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 18px;
 }
-
-/* PRODUCT CARD */
 
 .product-card {
   background: white;
@@ -160,8 +145,6 @@ body {
   transform: translateY(-4px);
 }
 
-/* PRODUCT IMAGE */
-
 .product-card img {
   display: block;
   width: 100%;
@@ -169,8 +152,6 @@ body {
   object-fit: cover;
   background: #eee8dc;
 }
-
-/* PRODUCT INFORMATION */
 
 .product-info {
   padding: 14px;
@@ -187,8 +168,6 @@ body {
   margin-bottom: 10px;
 }
 
-/* CATEGORY */
-
 .product-category {
   display: inline-block;
   background: #eaf4ed;
@@ -198,13 +177,140 @@ body {
   font-size: 12px;
 }
 
-/* PRICE */
-
 .product-price {
   color: var(--primary);
   font-size: 20px;
   font-weight: bold;
-  margin-top: 12px;
+  margin: 12px 0;
+}
+
+/* ADD TO CART */
+
+.add-cart-btn,
+.order-btn,
+.whatsapp-btn {
+  width: 100%;
+  border: none;
+  border-radius: 8px;
+  padding: 13px;
+  background: var(--primary);
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 8px;
+}
+
+.add-cart-btn:hover,
+.order-btn:hover,
+.whatsapp-btn:hover {
+  background: var(--primary-dark);
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* CART */
+
+.cart-section,
+.checkout-section {
+  background: white;
+  padding: 22px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  margin: 20px 0 40px;
+}
+
+.cart-section h2,
+.checkout-section h2 {
+  font-size: 23px;
+  margin-bottom: 18px;
+}
+
+.empty-cart {
+  text-align: center;
+  color: var(--muted);
+  padding: 20px;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.cart-details p {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.quantity-controls button {
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 6px;
+  background: #eaf4ed;
+  color: var(--primary-dark);
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.cart-total {
+  text-align: right;
+  font-size: 21px;
+  font-weight: bold;
+  color: var(--primary);
+  padding: 18px 0;
+}
+
+/* CHECKOUT FORM */
+
+.checkout-section label {
+  display: block;
+  font-weight: bold;
+  margin: 14px 0 6px;
+}
+
+.checkout-section input,
+.checkout-section textarea {
+  width: 100%;
+  padding: 13px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 15px;
+  font-family: inherit;
+}
+
+.checkout-section input:focus,
+.checkout-section textarea:focus {
+  outline: 2px solid #9ac7a9;
+}
+
+.whatsapp-btn {
+  background: #168b49;
+  margin-top: 20px;
+}
+
+.back-btn {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: white;
+  margin-top: 10px;
+  cursor: pointer;
+  font-size: 15px;
 }
 
 /* EMPTY MESSAGE */
@@ -227,7 +333,7 @@ body {
   font-size: 14px;
 }
 
-/* MOBILE RESPONSIVE */
+/* MOBILE */
 
 @media (max-width: 720px) {
 
@@ -248,9 +354,11 @@ body {
     font-size: 23px;
   }
 
+  .cart-section,
+  .checkout-section {
+    padding: 15px;
+  }
 }
-
-/* SMALL MOBILE */
 
 @media (max-width: 380px) {
 
@@ -265,5 +373,4 @@ body {
   .brand h1 {
     font-size: 23px;
   }
-
 }
