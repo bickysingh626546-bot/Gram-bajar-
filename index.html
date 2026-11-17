@@ -1,29 +1,62 @@
-
-<div class="filters">
-
-  <input
-    id="search"
-    type="search"
-    placeholder="🔍 कोई भी सामान खोजें..."
-    oninput="showProducts()"
-  >
-
-  <button
-    type="button"
-    onclick="clearSearch()"
-    class="cart-btn">
-    ✖ Clear
-  </button>
-
-  <select
-    id="category"
-    onchange="showProducts()">
-    <option value="all">सभी कैटेगरी</option>
-  </select>
-
-</div>
-
-<p id="resultCount"></p>
-
-<div id="products" class="products"></div>
  
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Gram Bajar - Deshi Products</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+
+  <header>
+    <h1>🌿 Gram Bajar</h1>
+    <p>गाँव के हस्तनिर्मित सामान का बाजार</p>
+  </header>
+
+  <main>
+
+    <h2>हमारे देसी उत्पाद</h2>
+
+    <div class="filters">
+
+      <input
+        id="search"
+        type="search"
+        placeholder="🔍 कोई भी सामान खोजें..."
+      >
+
+      <button
+        type="button"
+        id="clearButton"
+        class="cart-btn">
+        ✖ Clear
+      </button>
+
+      <select id="category">
+        <option value="all">सभी कैटेगरी</option>
+      </select>
+
+    </div>
+
+    <p id="resultCount"></p>
+
+    <div id="products" class="products-grid"></div>
+
+    <p id="emptyMessage" hidden>
+      कोई सामान नहीं मिला।
+    </p>
+
+  </main>
+
+  <footer>
+    <p>© 2026 Gram Bajar</p>
+  </footer>
+
+</body>
+</html>
