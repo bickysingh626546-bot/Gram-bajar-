@@ -1,6 +1,11 @@
-// Gram Bajar - product data and search/filter logic
-// Apne asli products add karne ke liye isi array mein naye objects jodiye.
+ 
+// =================================
+// 🌿 GRAM BAJAR - JAVASCRIPT
+// =================================
+
+// सभी Products की जानकारी
 const products = [
+
   {
     name: "मिट्टी का घड़ा",
     category: "मिट्टी के सामान",
@@ -8,43 +13,50 @@ const products = [
     description: "हाथ से बना पारंपरिक मिट्टी का घड़ा।",
     image: "https://placehold.co/600x400/e9dfcf/514333?text=Matka"
   },
+
   {
     name: "मिट्टी का दीया",
     category: "मिट्टी के सामान",
     price: 20,
-    description: "पूजा और सजावट के लिए मिट्टी का दीया।",
+    description: "पूजा और सजावट के लिए सुंदर दीया।",
     image: "https://placehold.co/600x400/e9dfcf/514333?text=Diya"
   },
+
   {
     name: "बाँस की टोकरी",
     category: "बाँस के सामान",
     price: 200,
-    description: "हाथ से बुनी उपयोगी बाँस की टोकरी।",
-    image: "https://placehold.co/600x400/e2eadf/34533d?text=Bamboo+Basket"
+    description: "हाथ से बनी मजबूत बाँस की टोकरी।",
+    image: "https://placehold.co/600x400/e2eadf/34533d?text=Basket"
   },
+
   {
     name: "बाँस की चटाई",
     category: "बाँस के सामान",
     price: 250,
-    description: "घर में उपयोग के लिए मजबूत चटाई।",
-    image: "https://placehold.co/600x400/e2eadf/34533d?text=Mat"
+    description: "घर में उपयोग के लिए हस्तनिर्मित चटाई।",
+    image: "https://placehold.co/600x400/e2eadf/34533d?text=Chatai"
   },
+
   {
-    name: "हस्तनिर्मित सजावटी सामान",
-    category: "हस्तनिर्मित सामान",
-    price: 120,
-    description: "घर की सजावट के लिए स्थानीय हस्तकला।",
-    image: "https://placehold.co/600x400/f0e5d8/594534?text=Handmade"
-  },
-  {
-    name: "लकड़ी का छोटा खिलौना",
+    name: "लकड़ी का खिलौना",
     category: "हस्तनिर्मित सामान",
     price: 100,
-    description: "हाथ से तैयार किया गया लकड़ी का खिलौना।",
-    image: "https://placehold.co/600x400/eadfce/594534?text=Wooden+Toy"
+    description: "स्थानीय कारीगरों द्वारा बनाया गया खिलौना।",
+    image: "https://placehold.co/600x400/eadfce/594534?text=Toy"
+  },
+
+  {
+    name: "हस्तनिर्मित सजावट",
+    category: "हस्तनिर्मित सामान",
+    price: 120,
+    description: "घर की सजावट के लिए सुंदर सामान।",
+    image: "https://placehold.co/600x400/f0e5d8/594534?text=Handmade"
   }
+
 ];
 
+// HTML Elements
 const searchInput = document.getElementById("search");
 const categorySelect = document.getElementById("category");
 const clearButton = document.getElementById("clearButton");
@@ -52,28 +64,45 @@ const productsContainer = document.getElementById("products");
 const resultCount = document.getElementById("resultCount");
 const emptyMessage = document.getElementById("emptyMessage");
 
+
+// =================================
+// CATEGORY LOAD
+// =================================
+
 function loadCategories() {
-  const categories = [...new Set(products.map(product => product.category))];
+
+  const categories = [
+    ...new Set(products.map(product => product.category))
+  ];
 
   categories.forEach(category => {
+
     const option = document.createElement("option");
+
     option.value = category;
     option.textContent = category;
+
     categorySelect.appendChild(option);
+
   });
+
 }
 
+
+// =================================
+// PRODUCT CARD
+// =================================
+
 function createProductCard(product) {
-  const card = document.createElement("article");
+
+  const card = document.createElement("div");
   card.className = "product-card";
 
   const image = document.createElement("img");
+
   image.src = product.image;
   image.alt = product.name;
   image.loading = "lazy";
-  image.onerror = () => {
-    image.src = "https://placehold.co/600x400/f0eee9/555555?text=Gram+Bajar";
-  };
 
   const info = document.createElement("div");
   info.className = "product-info";
@@ -90,50 +119,105 @@ function createProductCard(product) {
 
   const price = document.createElement("div");
   price.className = "product-price";
-  price.textContent = `₹${Number(product.price).toLocaleString("en-IN")}`;
+  price.textContent = "₹" + product.price;
 
   info.append(name, description, category, price);
   card.append(image, info);
+
   return card;
+
 }
 
+
+// =================================
+// SHOW PRODUCTS
+// =================================
+
 function showProducts() {
-  const searchText = searchInput.value.trim().toLocaleLowerCase("hi");
-  const selectedCategory = categorySelect.value;
+
+  const searchText =
+    searchInput.value.trim().toLowerCase();
+
+  const selectedCategory =
+    categorySelect.value;
 
   const filteredProducts = products.filter(product => {
-    const searchableText =
-      `${product.name} ${product.category} ${product.description}`.toLocaleLowerCase("hi");
 
-    const matchesSearch = searchableText.includes(searchText);
-    const matchesCategory =
-      selectedCategory === "all" || product.category === selectedCategory;
+    const productText =
+      (
+        product.name + " " +
+        product.category + " " +
+        product.description
+      ).toLowerCase();
 
-    return matchesSearch && matchesCategory;
+    const matchSearch =
+      productText.includes(searchText);
+
+    const matchCategory =
+      selectedCategory === "all" ||
+      product.category === selectedCategory;
+
+    return matchSearch && matchCategory;
+
   });
 
   productsContainer.replaceChildren();
 
   filteredProducts.forEach(product => {
-    productsContainer.appendChild(createProductCard(product));
+
+    productsContainer.appendChild(
+      createProductCard(product)
+    );
+
   });
 
-  resultCount.textContent = `कुल सामान मिले: ${filteredProducts.length}`;
-  emptyMessage.hidden = filteredProducts.length !== 0;
+  resultCount.textContent =
+    "कुल सामान मिले: " + filteredProducts.length;
+
+  emptyMessage.hidden =
+    filteredProducts.length !== 0;
+
 }
+
+
+// =================================
+// CLEAR SEARCH
+// =================================
 
 function clearSearch() {
+
   searchInput.value = "";
   categorySelect.value = "all";
+
   showProducts();
+
 }
 
-searchInput.addEventListener("input", showProducts);
-categorySelect.addEventListener("change", showProducts);
-clearButton.addEventListener("click", clearSearch);
 
-document.getElementById("year").textContent = new Date().getFullYear();
+// =================================
+// WEBSITE START
+// =================================
 
-loadCategories();
-showProducts();
+function initializeGramBajar() {
 
+  loadCategories();
+  showProducts();
+
+  searchInput.addEventListener(
+    "input",
+    showProducts
+  );
+
+  categorySelect.addEventListener(
+    "change",
+    showProducts
+  );
+
+  clearButton.addEventListener(
+    "click",
+    clearSearch
+  );
+
+}
+
+initializeGramBajar();
