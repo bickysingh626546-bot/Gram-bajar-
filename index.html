@@ -1,1 +1,29 @@
+
+<div class="filters">
+
+  <input
+    id="search"
+    type="search"
+    placeholder="🔍 कोई भी सामान खोजें..."
+    oninput="showProducts()"
+  >
+
+  <button
+    type="button"
+    onclick="clearSearch()"
+    class="cart-btn">
+    ✖ Clear
+  </button>
+
+  <select
+    id="category"
+    onchange="showProducts()">
+    <option value="all">सभी कैटेगरी</option>
+  </select>
+
+</div>
+
+<p id="resultCount"></p>
+
+<div id="products" class="products"></div>
  
